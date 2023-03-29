@@ -1,0 +1,21 @@
+.menuIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sider{
+    width: 250px;
+}
+.headerContent {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+}
+.headerContent h1 {
+    font-weight: bold;
+}
+.itemRight {
+    display: flex;
+    font-weight: bold;
+}
+
