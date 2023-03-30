@@ -44,7 +44,7 @@ function Food_Model(props) {
                 onOk={form.submit}
                 onCancel={close}
             >
-                <Food form={form} onSubmit={onSubmit} isAdd={isAdd} />
+                <Food form={form} onSubmit={onSubmit} isAdd={isAdd} food={food} />
             </Modal>
         </>
     );

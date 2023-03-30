@@ -5,6 +5,8 @@ import { unitApi } from '@/api/unitApi';
 import moment from 'moment';
 import en_US from 'antd/locale/en_US';
 function index(props) {
+    const { form, onSubmit, food } = props;
+    console.log(form);
     const layout = {
         labelCol: {
             span: 8,
@@ -16,8 +18,8 @@ function index(props) {
     const validateMessages = {
         required: '${label} is required!',
     };
-    const { form, onSubmit } = props;
     const onUpdate = async (data) => {
+        console.log(data);
         onSubmit(data);
     };
     const [units, setUnits] = useState([]);
@@ -34,7 +36,6 @@ function index(props) {
     useEffect(() => {
         getAllUnit()
     }, []);
-    const dateFormat = 'DD/MM/YYYY';
     return (
         <>
             <Form
@@ -79,29 +80,12 @@ function index(props) {
                 </Form.Item>
                 
                 <Form.Item
-                    name="createdDate"
-                    label="CreatedDate"
-                    rules={[
-                        {
-                            required: true,
-                        }
-                    ]}
-                >
-                    {/* <ConfigProvider>
-                        <DatePicker
-                            style={{
-                                width: "100%"
-                            }}
-                            picker='date'
-                            format={dateFormat}
-                        />
-                    </ConfigProvider> */}
-                        <DatePicker
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                </Form.Item>
+                     name='createdDate'
+                     label='Created Date'
+                    >
+                    <DatePicker format='DD-MM-YYYY' style={{ width: '100%' }}  locale={{locale: 'vn_VN'}}
+                    />
+                    </Form.Item>
                 <Form.Item
                     name="type"
                     label="Type"

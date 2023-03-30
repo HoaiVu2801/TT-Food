@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Food_Model from './FoodControl/Food_Model';
 import { foodbyrestaurantApi } from '@/api/foodbyrestaurantApi';
 import { format } from 'date-fns'
+import moment from 'moment';
+import 'moment/locale/vi';
 function index(props) {
     const { Search } = Input;
 
@@ -60,10 +62,14 @@ function index(props) {
     const [isAdd, setIsAdd] = useState(false);
 
     const getFood = async (id) => {
-        const res = await foodbyrestaurantApi.getFoodByRestaurantById(id);
-        console.log(res.data);
+        const date = moment(id.createdDate, 'DD-MM-YYYY').locale('vi');;
+        const ConvertDate = {
+            ...id,
+            createdDate: date,
+        }
+        console.log(ConvertDate);
         setOpen(true);
-        setFood(res.data);
+        setFood(ConvertDate);
         setIsAdd(false);
     }
 
@@ -75,7 +81,7 @@ function index(props) {
     const onSuccess = async () => {
         notification.open({
             message: "Sucessfully",
-            description: "Added Sucessfully",
+            description: "Sucessfully",
         });
         onClose();
         await getData();
@@ -139,7 +145,7 @@ function index(props) {
             align: "center",
             render: (text, record) => (
                 <Space size="middle">
-                    <EditOutlined onClick={() => getFood(record.foodID)} />
+                    <EditOutlined onClick={() => getFood(record)} />
                     <DeleteOutlined onClick={() => onDelete(record.foodID)} />
                 </Space>
             ),
