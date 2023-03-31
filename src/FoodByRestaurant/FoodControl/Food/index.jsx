@@ -80,6 +80,12 @@ function index(props) {
                 <Form.Item
                      name='createdDate'
                      label='Created Date'
+                     rules={[
+                        {
+                            required: true,
+                            message: "Please select a unit",
+                        }
+                    ]}
                     >
                     <DatePicker style={{ width: '100%' }}  locale={{locale: 'vn_VN'}}
                     />
