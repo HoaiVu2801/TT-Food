@@ -37,15 +37,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ClockSkew = TimeSpan.Zero
     };
 });
-builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
-{
-    build
-        .WithOrigins("*")
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials()
-        .SetIsOriginAllowed(origin => true);
-}));
 
 var app = builder.Build();
 
@@ -56,7 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("corspolicy");
+app.UseCors();
 
 app.UseHttpsRedirection();
 
