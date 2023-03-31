@@ -3,9 +3,7 @@ import { PlusCircleOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFill
 import { useState, useEffect } from 'react';
 import Food_Model from './FoodControl/Food_Model';
 import { foodbyrestaurantApi } from '@/api/foodbyrestaurantApi';
-import { format } from 'date-fns'
-import moment from 'moment';
-import 'moment/locale/vi';
+import dayjs from 'dayjs';
 function index(props) {
     const { Search } = Input;
 
@@ -62,12 +60,11 @@ function index(props) {
     const [isAdd, setIsAdd] = useState(false);
 
     const getFood = async (id) => {
-        const date = moment(id.createdDate, 'DD-MM-YYYY').locale('vi');;
+        const date =dayjs(id.createdDate, "D-M-YYYY");
         const ConvertDate = {
             ...id,
             createdDate: date,
         }
-        console.log(ConvertDate);
         setOpen(true);
         setFood(ConvertDate);
         setIsAdd(false);

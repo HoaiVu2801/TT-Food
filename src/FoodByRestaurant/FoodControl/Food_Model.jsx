@@ -7,7 +7,6 @@ import en_US from 'antd/locale/en_US';
 function Food_Model(props) {
     const { onClose, onSuccess, onError, isAdd, food } = props;
     const onSubmit = async (data) => {
-        console.log(data);
         try {
             if (isAdd) {
                 const t = data.foodName;

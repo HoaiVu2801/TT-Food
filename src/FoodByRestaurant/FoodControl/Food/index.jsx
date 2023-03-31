@@ -6,7 +6,6 @@ import moment from 'moment';
 import en_US from 'antd/locale/en_US';
 function index(props) {
     const { form, onSubmit, food } = props;
-    console.log(form);
     const layout = {
         labelCol: {
             span: 8,
@@ -19,7 +18,6 @@ function index(props) {
         required: '${label} is required!',
     };
     const onUpdate = async (data) => {
-        console.log(data);
         onSubmit(data);
     };
     const [units, setUnits] = useState([]);
@@ -83,7 +81,7 @@ function index(props) {
                      name='createdDate'
                      label='Created Date'
                     >
-                    <DatePicker format='DD-MM-YYYY' style={{ width: '100%' }}  locale={{locale: 'vn_VN'}}
+                    <DatePicker style={{ width: '100%' }}  locale={{locale: 'vn_VN'}}
                     />
                     </Form.Item>
                 <Form.Item
